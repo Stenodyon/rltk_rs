@@ -11,10 +11,16 @@ mod wasm;
 #[cfg(all(feature = "opengl", target_arch = "wasm32"))]
 pub use wasm::*;
 
-#[cfg(not(feature = "opengl"))]
+#[cfg(all(not(feature="opengl"), feature="curses"))]
+mod curses;
+
+#[cfg(all(not(feature="opengl"), feature="curses"))]
+pub use curses::*;
+
+#[cfg(all(not(feature = "opengl"), not(feature = "curses")))]
 mod dummy;
 
-#[cfg(not(feature = "opengl"))]
+#[cfg(all(not(feature = "opengl"), not(feature = "curses")))]
 pub use dummy::*;
 
 pub use shader::Shader;
