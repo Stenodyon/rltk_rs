@@ -46,13 +46,13 @@ pub fn init_raw<S: ToString>(
 
     Rltk {
         backend: RltkPlatform {
-            gl,
             platform: PlatformGL {
                 quad_vao,
                 context_wrapper: Some(WrappedContext {
                     el,
                     wc: windowed_context,
-                })
+                }),
+                gl
             },
         },
         width_pixels,
