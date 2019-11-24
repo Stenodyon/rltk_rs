@@ -23,16 +23,16 @@ pub fn draw_box(
     }
 
     console.set(sx, sy, fg, bg, to_cp437('┌'));
-    console.set(sx + width, sy, fg, bg, to_cp437('┐'));
-    console.set(sx, sy + height, fg, bg, to_cp437('└'));
-    console.set(sx + width, sy + height, fg, bg, to_cp437('┘'));
-    for x in sx + 1..sx + width {
+    console.set(sx + width - 1, sy, fg, bg, to_cp437('┐'));
+    console.set(sx, sy + height - 1, fg, bg, to_cp437('└'));
+    console.set(sx + width - 1, sy + height - 1, fg, bg, to_cp437('┘'));
+    for x in sx + 1..sx + width - 1 {
         console.set(x, sy, fg, bg, to_cp437('─'));
-        console.set(x, sy + height, fg, bg, to_cp437('─'));
+        console.set(x, sy + height - 1, fg, bg, to_cp437('─'));
     }
-    for y in sy + 1..sy + height {
+    for y in sy + 1..sy + height - 1 {
         console.set(sx, y, fg, bg, to_cp437('│'));
-        console.set(sx + width, y, fg, bg, to_cp437('│'));
+        console.set(sx + width - 1, y, fg, bg, to_cp437('│'));
     }
 }
 

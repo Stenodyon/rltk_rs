@@ -138,6 +138,9 @@ impl Console for SimpleConsole {
 
     /// Sets a single cell in the console
     fn set(&mut self, x: i32, y: i32, fg: RGB, bg: RGB, glyph: u8) {
+        if x < 0 || x >= self.width as i32 || y < 0 || y >= self.height as i32 {
+            return;
+        }
         let idx = self.at(x, y);
         self.tiles[idx].glyph = glyph;
         self.tiles[idx].fg = fg;
